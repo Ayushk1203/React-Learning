@@ -5,13 +5,24 @@ import FoodItems from './components/FoodItems';
 import ErrorMessage from './components/ErrorMessage';
 import Container from './components/Container';
 import FoodInput from './components/FoodInput';
-
+import {useState} from 'react';
 function App() {
   
-  let foodItems = ['Dal','Green Vegetables', 'Roti', 'Salad', 'Milk','Butter'];
-  const handleonchange = (e) =>{
-    console.log(e.target.value);
-}
+  let [foodItems,setFoodValue] = useState([]);
+  
+  
+  const handleKeyDown = (event) =>{
+    if(event.key === 'Enter'){
+      let newFoodValue = event.target.value;
+      event.target.value = "";
+      let newFoodItems = [...foodItems,newFoodValue];
+      setFoodValue(newFoodItems);
+    }
+    console.log(event.target.value);
+  } 
+  
+  //let foodItems = ['Dal', 'Salad', 'Green Vegetables'];
+
   //let foodItems = [];
 
   //Conditional Rendering :- {foodItems.length === 0 ? <h3>I am still hungry</h3>:null} used below
@@ -21,12 +32,12 @@ function App() {
   <>
     <Container>
       <center><h1>Healthy Food</h1></center>
-      <FoodInput handleonchange={handleonchange}/>
+      <FoodInput handleKeyDown={handleKeyDown}/>
+      
       <FoodItems items={foodItems}/>
       <ErrorMessage items={foodItems}/>
     </Container>
-      
-    
+
 </>
   )
 };

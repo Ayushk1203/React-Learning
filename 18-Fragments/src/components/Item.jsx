@@ -1,13 +1,12 @@
 import styles from "./Item.module.css";
 
-function Item ({foodItem, handleBuyButton}){
-    
+function Item ({foodItem, bought, handleBuyButton}){
     
 
     return (
         <>
-        <li key={foodItem} className="list-group-item">{foodItem}
-             <button className={styles.delete} onClick={handleBuyButton}>Buy</button></li>
+        <li key={foodItem} className={`list-group-item ${bought && "active"} `}>{foodItem}
+             <button className={`${styles.delete} `} onClick={handleBuyButton}>Buy</button></li>
         </>
     )
 }
