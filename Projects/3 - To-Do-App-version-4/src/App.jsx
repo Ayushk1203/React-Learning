@@ -22,10 +22,22 @@ function App() {
      date : '5/10/2024'
     }]); 
 
-  const handleToDoItem = (toDoName,toDoDate) =>{
+  /* const handleToDoItem = (toDoName,toDoDate) =>{
     let newToDoItem = {item:toDoName,date:toDoDate};
     let newToDoList = [...toDoItems,newToDoItem];
     setToDoItems(newToDoList);
+  } */
+
+  //updating state from previous state (using function)
+
+  const handleToDoItem = (toDoName,toDoDate) =>{
+    /* setToDoItems((currValue)=>{
+      let newToDoItem = [...currValue,{item:toDoName,date:toDoDate}];
+      return newToDoItem;
+    })*/
+
+      setToDoItems((currValue) => [...currValue,{item:toDoName,date:toDoDate}]);
+     
   }
 
   const handleOnDelete = (todoname)=>{
