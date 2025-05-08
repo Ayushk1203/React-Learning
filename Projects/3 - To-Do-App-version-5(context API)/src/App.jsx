@@ -1,0 +1,62 @@
+import AppName from './components/AppName';
+import AddToDo from './components/AddToDo';
+
+import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import ToDoItems from './components/ToDoItems';
+import {useState} from 'react';
+import ErrorMessage from './components/ErrorMessage';
+import { toDoItemsContext } from "./store/to-Do-Items-store";
+
+
+function App() {
+
+  let [toDoItems,setToDoItems] = useState([{
+    item : 'Buy Milk',
+    date : '4/10/2023'
+   },
+   {
+     item : 'Go To College',
+     date : '4/10/2023'
+    },
+    {
+     item : 'Buy 1 kg Rice',
+     date : '5/10/2024'
+    }]); 
+
+  /* const handleToDoItem = (toDoName,toDoDate) =>{
+    let newToDoItem = {item:toDoName,date:toDoDate};
+    let newToDoList = [...toDoItems,newToDoItem];
+    setToDoItems(newToDoList);
+  } */
+
+  //updating state from previous state (using function)
+
+  const addnewItem = (toDoName,toDoDate) =>{
+    /* setToDoItems((currValue)=>{
+      let newToDoItem = [...currValue,{item:toDoName,date:toDoDate}];
+      return newToDoItem;
+    })*/
+
+      setToDoItems((currValue) => [...currValue,{item:toDoName,date:toDoDate}]);
+    
+  }
+
+  const deleteItem = (todoname)=>{
+    const newList = toDoItems.filter(listItem => listItem.item !== todoname);
+    setToDoItems(newList);
+  }
+
+  return (
+    <toDoItemsContext.Provider value={{toDoItems,addnewItem,deleteItem}}>
+    <center className="todo-container">
+      <AppName></AppName>
+      <AddToDo />
+      <ErrorMessage />
+      <ToDoItems />
+    </center>
+    </toDoItemsContext.Provider>
+  );
+}
+
+export default App;
