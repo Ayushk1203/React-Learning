@@ -1,0 +1,45 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+.left-side-bar{
+    display:flex;
+}
+
+.sidebar{
+    min-height:800px;
+}
+
+.content{
+    width:100%;
+}
+
+.right-side-div{
+    width:100%;
+}
+
+.post-card{
+    margin: 20px 50px;
+    min-width:30rem;
+}
+
+.hashtag{
+    margin: 0px 3px;
+}
+
+.create-post{
+    width:80%;
+    margin-left:10%;
+    margin-top:50px;
+}
+
+.welcomeMessage{
+    margin-top:100px;
+    
+}
+
+.spinner{
+    margin: 10% 0;
+}
